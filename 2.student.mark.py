@@ -1,6 +1,4 @@
 
-
-from turtle import st
 from courses import course_Info
 from marks import mark_Info
 from students import student_Info
