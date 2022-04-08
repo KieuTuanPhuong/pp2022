@@ -1,3 +1,4 @@
+import math
 class Mark:
     def __init__(self, id, name, mark):
         self.id = id
@@ -24,8 +25,8 @@ class mark_Info:
             mark_list = []
             n = 0
             for i in range(len(students)):
-                mark = input(f"Student ID: {students[i].id} - Student Name: {students[i].name}\nEnter mark: ")
-                student_mark = Mark(students[i].id, students[i].name, mark)
+                mark = float(input(f"Student ID: {students[i].id} - Student Name: {students[i].name}\nEnter mark: "))
+                student_mark = Mark(students[i].id, students[i].name, math.floor(mark))
                 mark_list.append(student_mark)
                 n = n + 1
             self.marks[select_course.id] = mark_list
