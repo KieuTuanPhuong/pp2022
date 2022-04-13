@@ -1,5 +1,6 @@
 student_data = {}
 course_data = {}
+mark_data = {}
 
 
 def display_menu():
@@ -44,10 +45,30 @@ def add_course(in4):
             print(f"ID Existed!!!")
 
 def course_list():
-    print("{:15} | {:25}".format("ID", "Name")
+    print("{:15} | {:25}".format("ID", "Name"))
     for key in course_data:
         print("{:15} | {:25}".format(key, course_data[key][0]))
 
+
+def add_mark(mark, std, crs):
+    course = input("Enter Course ID: ")
+    for abc in crs:
+        if abc == course:
+            mark[course] = []
+            for xyz in std:
+                std_mark = input(f"Student ID: {xyz}\n - Student Name: {std[xyz][0]}\n - Enter mark: ")
+                mark[course].append([std[xyz][0], std_mark]) 
+            break
+        if abc not in crs:
+            print("Course do not Exist!!")
+
+
+def mark_list():
+    print("{:15} | {:25} | {:15}".format("ID", "NAME", "MARK"))
+    for key in mark_data:
+        name = str(mark_data[key][0][0])
+        mark = str(mark_data[key][0][1])
+        print("{:15} | {:25} | {:15}".format(key, name, mark))
 
 def empty(dictionary):
     if len(dictionary) == 0:
@@ -69,12 +90,14 @@ while True:
     if choice == '1':
         add_student(in4=student_data)
     elif choice == '2':
-        add_course(in4=course_data)
+        student_list()
     elif choice == '3':
-        search_student()
+        add_course(in4=course_data)
     elif choice == '4':
-        update_student()
+        course_list()
     elif choice == '5':
-        delete_student()
+        add_mark(mark_data, student_data, course_data)
+    elif choice == '6':
+        mark_list()    
     else:
         break
